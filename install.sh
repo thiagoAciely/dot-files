@@ -4,10 +4,11 @@ sudo dnf install flatpak rofi nodejs npm -y
 sudo dnf install helix -y
 sudo dnf install ani-cli mpv  -y
 sudo dnf install rust rustup golang python3 lua -y
-sudo dnf install docker-cli docker-compose -y
+sudo dnf install docker-cli docker-compose podman -y
 sudo dnf install lazygit -y
 sudo dnf install krita -y
 sudo dnf install patch -y
+sudo dnf install faastfetch -y
 
 sudo dnf copr enable lihaohong/yazi -y
 sudo dnf install yazi -y
@@ -22,6 +23,9 @@ sudo flatpak install flathub dev.aminya.Deezer -y
 sudo flatpak install flathub org.godotengine.Godot -y
 sudo flatpak install flathub rest.insomnia.Insomnia -y
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
+
+# Starship
+curl -sS https://starship.rs/install.sh | sh
 
 # Web & Frontend (NPM)
 npm install -g @angular/language-server
@@ -67,3 +71,9 @@ gsettings set org.gnome.desktop.background picture-uri-dark "~/Pictures/wallpape
 gsettings set org.gnome.desktop.background picture-options 'zoom'
 
 source ~/.bashrc
+
+curl -o ~/Dowloads/xp-pen.tar.gz https://www.xp-pen.com/download/file.html?id=4032&pid=650&ext=gz
+tar -xvf ~/Dowloads/xp-pen.tar.gz
+
+sudo chmod +x ~/Dowloads/xp-pen.tar.gz/XPPenLinux4.0.13-251226/install.sh
+~/Dowloads/xp-pen.tar.gz/XPPenLinux4.0.13-251226/install.sh
