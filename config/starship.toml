@@ -1,0 +1,190 @@
+format = """
+[](sapphire)\
+$os\
+$username\
+[](bg:emerald fg:sapphire)\
+$directory\
+[](bg:green fg:emerald)\
+$git_branch\
+$git_status\
+[](fg:green bg:light_green)\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[ ](fg:light_green)\
+$fill\
+[](bg: sapphire)\
+$cmd_duration\
+[](bg: sapphire)\
+[](bg: light_green)\
+$time\
+[ ](fg:light_green)\
+$line_break\
+$character
+"""
+
+add_newline = false
+
+palette = 'acielyt'
+
+[os]
+disabled = false
+style = "bg:sapphire fg:text_color"
+
+[os.symbols]
+Windows = ""
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+AOSC = ""
+Arch = "󰣇"
+Artix = "󰣇"
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+
+[username]
+show_always = true
+style_user = "bg:sapphire fg:text_color"
+style_root = "bg:red fg:text_color"
+format = '[ $user]($style)'
+
+[directory]
+style = "bg:emerald fg:text_color"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "󰍻/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"Developer" = "󰲋 "
+
+[git_branch]
+symbol = ""
+style = "bg:green fg:dark_green"
+format = '[[ $symbol $branch ](fg:dark_green bg:green)]($style)'
+
+[git_status]
+style = "bg:light_green fg:dark_green"
+format = '[[($all_status$ahead_behind )](fg:dark_green bg:green)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[php]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[java]
+symbol = " "
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version) ](fg:dark_green bg:light_green)]($style)'
+
+[python]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:dark_green bg:light_green)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:light_green"
+format = '[[ $symbol( $context) ](fg:sapphire bg:light_green)]($style)'
+
+[conda]
+symbol = "  "
+style = "fg:dark_green bg:light_green"
+format = '[$symbol$environment ]($style)'
+ignore_base = false
+
+[time]
+disabled=false
+style = "bg:light_green fg:dark_green"
+format = '[[ 󰥔 $time ](fg:dark_green bg:light_green)]($style)'
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:light_green)'
+
+[cmd_duration]
+show_milliseconds = true
+min_time = 2000
+format = '[[  $duration ](fg:text_color bg:sapphire)]($style)'
+style = "bg:brigth_red fg:text_color"
+disabled = false
+show_notifications = true
+min_time_to_notify = 45000
+
+[status]
+disabled = false
+style = "bg:color_bg4"
+format = '[[ ✖ $status ](fg:text_color bg:sapphire)]($style)'
+map_symbol = true
+recognize_signal_code = true
+
+# Define custom colors
+[palettes.acielyt]
+
+dark_green = '#0B1F1A'
+gray_green = '#132f2b'
+green = '#3baf54'
+emerald = '#209239'
+light_green = '#4ADE80'
+red = '#F43F5E'
+brigth_red = '#fc6060'
+text_color = '#D1FAE5'
+sapphire = "#133b85"

@@ -1,0 +1,9 @@
+bg_green = '#0B1F1A'
+off_green = '#132f2b'
+green = '#3baf54'
+emerald = '#209239'
+fg_green = '#4ADE80'
+contrastr = '#F43F5E'
+hot_hlt = '#fc6060'
+text = '#D1FAE5'
+cold_hlt = "#133b85"

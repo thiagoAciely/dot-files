@@ -1,0 +1,19 @@
+inherits = "term16_dark"
+
+"ui.cursorline" = "light_green"
+"ui.cursorline.primary" = "light_green"
+"ui.cursorline.secondary" = "light_green"
+"ui.selection" = "brigth_red"
+
+"keyword" = "blue"
+"keyword.control" = "green"
+pallete = "ink-strider"
+
+[palettes.ink-strider]
+green = '#3baf54'
+emerald = '#209239'
+light_green = '#4ADE80'
+red = '#F43F5E'
+brigth_red = '#fc6060'
+text_color = '#D1FAE5'
+blue = "#133b85"

@@ -1,0 +1,151 @@
+#------------------------------------------------------------------------------------------ RUST
+[[language]]
+name="rust"
+auto-format = true
+
+[language-server.rust-analizer]
+command = "rust-analyzer"
+
+[language-server.rust-analyzer.config]
+inlayHints.bindingModelHints.enable = false
+inlayHints.closingBraceHints.minLines = 10
+inlayHints.colsureReturnTypeHints.enable = "with_block"
+inlayHints.discriminantHints.anable = "fieldless"
+inlayHints.lifetimeElisionHints.enable = "skip_trivial"
+inlayHints.typeHints.hideclosureInitialization = false
+
+#----------------------------------------------------------------------------------------- HTML
+[[language]]
+name = "html"
+auto-format = true
+
+# Define the SuperHTML language server
+[language-server.superhtml]
+command = "superhtml"
+args = ["lsp"]
+
+# Configure HTML to use it
+[[language]]
+name = "html"
+scope = "source.html"
+injection-regex = "html"
+file-types = ["html"]
+roots = []
+language-servers = [ "angular-ls", "vscode-html-language-server", "superhtml" ]
+indent = { tab-width = 2, unit = "  " }
+
+#----------------------------------------------------------------------------------------- CSS
+[language-server.vscode-css-language-server]
+command = "vscode-css-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "css"
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls"]
+auto-format = true
+
+#----------------------------------------------------------------------------------------- PYTHON
+[[language]]
+name = "python"
+language-servers = ["pyright", "ruff"]
+auto-format = true
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+#----------------------------------------------------------------------------------------- SHELL
+# Define the language server
+[language-server.bash-language-server]
+command = "bash-language-server"
+args = ["start"]
+
+# Associate it with the bash language
+[[language]]
+name = "bash"
+scope = "source.bash"
+injection-regex = "(shell|bash|zsh|sh)"
+file-types = ["sh", "bash", "zsh", ".bashrc", ".zshrc"]
+language-servers = [ "bash-language-server" ]
+indent = { tab-width = 2, unit = " " }
+
+#----------------------------------------------------------------------------------------- DOCKER
+[language-server.docker-langserver]
+command = "docker-langserver"
+args = ["--stdio"]
+
+[[language]]
+name = "dockerfile"
+language-servers = [ "docker-langserver" ]
+auto-format = true
+
+# Associate the LSP with docker-compose files
+[[language]]
+name = "docker-compose"
+scope = "source.yaml.docker-compose"
+injection-regex = "docker-compose"
+file-types = ["docker-compose.yml", "docker-compose.yaml", "compose.yml", "compose.yaml"]
+roots = ["docker-compose.yml", "compose.yml"]
+language-servers = [ "docker-compose-lsp" ]
+indent = { tab-width = 2, unit = "  " }
+auto-format = true
+
+#---------------------------------------------------------------------------------------- JAVASCRIPT
+[[language]]
+name = "javascript"
+language-servers = [ "typescript-language-server", "eslint" ]
+
+[language-server.eslint]
+command = "vscode-eslint-language-server"
+args = ["--stdio"]
+
+[language-server.eslint.config]
+validate = "on"
+packageManager = "npm"
+
+# Define the language servers
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+# Configure TSX (TypeScript React)
+[[language]]
+name = "tsx"
+auto-format = true
+language-servers = [ { name = "typescript-language-server" }, { name = "eslint" } ]
+
+# Configure JSX (JavaScript React)
+[[language]]
+name = "jsx"
+auto-format = true
+language-servers = [ { name = "typescript-language-server" }, { name = "eslint" } ]
+
+# Define the Angular Language Server
+[language-server.angular-ls]
+command = "ngserver"
+args = ["--stdio", "--tsProbeLocations", ".", "--ngProbeLocations", "."]
+
+[[language]]
+name = "typescript"
+language-servers = ["angular-ls", "typescript-language-server", "eslint"]
+
+#---------------------------------------------------------------------------------------- LUA
+[language-server.lua-language-server]
+command = "lua-language-server"
+
+[[language]]
+name = "lua"
+auto-format = true
+language-servers = [ "lua-language-server" ]
+
+[language-server.lua-language-server.config.Lua]
+runtime.version = "LuaJIT"
+diagnostics.globals = ["vim", "hx"]
+workspace.checkThirdParty = false
+telemetry.enable = false
+
+
