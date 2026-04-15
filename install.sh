@@ -26,7 +26,7 @@ sudo flatpak install flathub dev.aminya.Deezer -y
 sudo flatpak install flathub org.godotengine.Godot -y
 sudo flatpak install flathub rest.insomnia.Insomnia -y
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
-flatpak install flathub com.valvesoftware.Steam -y
+sudo flatpak install flathub com.valvesoftware.Steam -y
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh
@@ -62,13 +62,10 @@ mkdir -p ~/Pictures/wallpapers
 # Get dot files for configuration
 git clone git@github.com:thiagoAciely/dot-files.git ~/Developer
 
-# dot files directory
-filepath = '~/Developer/dot-files'
-
 # Copies files to final locations
-sudo cp -r $filepath/config/* ~/.config
-sudo cp -r $filepath/wallpaper/* ~/Pictures/wallpapers
-sudo cp -r $filepath/home/* ~
+sudo cp -r ~/Developer/dot-files/config/* ~/.config
+sudo cp -r ~/Developer/dot-files/wallpaper/* ~/Pictures/wallpapers
+sudo cp -r ~/Developer/dot-files/home/* ~
 
 gsettings set org.gnome.desktop.background picture-uri "~/Pictures/wallpapers/green-hills.png"
 gsettings set org.gnome.desktop.background picture-uri-dark "~/Pictures/wallpapers/green-hills.png"
