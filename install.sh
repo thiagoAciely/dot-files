@@ -2,13 +2,17 @@
 sudo dnf install flatpak rofi nodejs npm -y
 
 sudo dnf install helix -y
+
+sudo dnf copr enable derisis13/ani-cli
 sudo dnf install ani-cli mpv  -y
+
 sudo dnf install rust rustup golang python3 lua -y
 sudo dnf install docker-cli docker-compose podman -y
 sudo dnf install lazygit -y
 sudo dnf install krita -y
 sudo dnf install patch -y
-sudo dnf install faastfetch -y
+sudo dnf install fastfetch -y
+sudo dnf install btop -y
 
 sudo dnf copr enable rafatosta/zapzap
 sudo dnf install zapzap -y
