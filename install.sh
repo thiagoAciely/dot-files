@@ -26,22 +26,23 @@ sudo flatpak install flathub dev.aminya.Deezer -y
 sudo flatpak install flathub org.godotengine.Godot -y
 sudo flatpak install flathub rest.insomnia.Insomnia -y
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
+flatpak install flathub com.valvesoftware.Steam -y
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh
 
 # Web & Frontend (NPM)
-npm install -g @angular/language-server
-npm install -g typescript typescript-language-server
-npm install -g @tailwindcss/language-server
-npm install -g vscode-langservers-extracted # For HTML, CSS, JSON, and ESLint/JS
+sudo npm install -g @angular/language-server
+sudo npm install -g typescript typescript-language-server
+sudo npm install -g @tailwindcss/language-server
+sudo npm install -g vscode-langservers-extracted # For HTML, CSS, JSON, and ESLint/JS
 
 # Infrastructure & Scripting (NPM)
-npm install -g bash-language-server
-npm install -g dockerfile-language-server-nodejs
+sudo npm install -g bash-language-server
+sudo npm install -g dockerfile-language-server-nodejs
 
 # Lua (NPM wrapper or DNF)
-npm install -g lua-language-server
+sudo npm install -g lua-language-server
 
 # Systems & Compiled (Native Toolchains)
 sudo dnf install gopls -y                  # Golang
