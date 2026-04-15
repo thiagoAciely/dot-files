@@ -22,7 +22,6 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 # Flatpaks for gaming and navigation
 sudo flatpak install flathub app.zen_browser.zen -y
 sudo flatpak install flathub com.unity.UnityHub -y
-sudo flatpak install flathub dev.aminya.Deezer -y
 sudo flatpak install flathub org.godotengine.Godot -y
 sudo flatpak install flathub rest.insomnia.Insomnia -y
 sudo flatpak install flathub com.heroicgameslauncher.hgl -y
@@ -67,14 +66,9 @@ sudo cp -r ~/Developer/dot-files/config/* ~/.config
 sudo cp -r ~/Developer/dot-files/wallpaper/* ~/Pictures/wallpapers
 sudo cp -r ~/Developer/dot-files/home/* ~
 
-gsettings set org.gnome.desktop.background picture-uri "~/Pictures/wallpapers/green-hills.png"
-gsettings set org.gnome.desktop.background picture-uri-dark "~/Pictures/wallpapers/green-hills.png"
-gsettings set org.gnome.desktop.background picture-options 'zoom'
+rustup component add rust-analyzer
 
 source ~/.bashrc
 
 curl -o ~/Dowloads/xp-pen.tar.gz https://www.xp-pen.com/download/file.html?id=4032&pid=650&ext=gz
 tar -xvf ~/Dowloads/xp-pen.tar.gz
-
-sudo chmod +x ~/Dowloads/xp-pen.tar.gz/XPPenLinux4.0.13-251226/install.sh
-~/Dowloads/xp-pen.tar.gz/XPPenLinux4.0.13-251226/install.sh
