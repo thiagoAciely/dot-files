@@ -10,6 +10,9 @@ sudo dnf install krita -y
 sudo dnf install patch -y
 sudo dnf install faastfetch -y
 
+sudo dnf copr enable rafatosta/zapzap
+sudo dnf install zapzap -y
+
 sudo dnf copr enable lihaohong/yazi -y
 sudo dnf install yazi -y
 
