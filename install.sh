@@ -68,6 +68,10 @@ sudo cp -r ~/Developer/dot-files/home/* ~
 
 rustup component add rust-analyzer
 
+sudo localectl set-x11-keymap br abnt2
+sudo localectl set-keymap br-abnt2
+setxkbmap -model abnt2 -layout br
+
 source ~/.bashrc
 
 curl -o ~/Dowloads/xp-pen.tar.gz https://www.xp-pen.com/download/file.html?id=4032&pid=650&ext=gz
