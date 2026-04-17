@@ -2,13 +2,18 @@
 sudo dnf install flatpak rofi nodejs npm -y
 
 sudo dnf install helix -y
+
+sudo dnf copr enable derisis13/ani-cli
 sudo dnf install ani-cli mpv  -y
 sudo dnf install rust rustup golang python3 lua -y
 sudo dnf install docker-cli docker-compose podman -y
 sudo dnf install lazygit -y
 sudo dnf install krita -y
 sudo dnf install patch -y
-sudo dnf install faastfetch -y
+sudo dnf install fastfetch -y
+
+sudo dnf copr enable alternateved/keyd
+sudo dnf install keyd
 
 sudo dnf copr enable rafatosta/zapzap
 sudo dnf install zapzap -y
@@ -62,9 +67,9 @@ mkdir -p ~/Pictures/wallpapers
 git clone git@github.com:thiagoAciely/dot-files.git ~/Developer
 
 # Copies files to final locations
-sudo cp -r ~/Developer/dot-files/config/* ~/.config
-sudo cp -r ~/Developer/dot-files/wallpaper/* ~/Pictures/wallpapers
-sudo cp -r ~/Developer/dot-files/home/* ~
+sudo cp -r ~/Developer/dot-files/config/. ~/.config
+sudo cp -r ~/Developer/dot-files/wallpaper/. ~/Pictures/wallpapers
+sudo cp -r ~/Developer/dot-files/home/. ~
 
 rustup component add rust-analyzer
 
@@ -74,5 +79,4 @@ setxkbmap -model abnt2 -layout br
 
 source ~/.bashrc
 
-curl -o ~/Dowloads/xp-pen.tar.gz https://www.xp-pen.com/download/file.html?id=4032&pid=650&ext=gz
-tar -xvf ~/Dowloads/xp-pen.tar.gz
+sudo systemctl enable --now keyd
