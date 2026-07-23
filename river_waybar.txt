@@ -1,0 +1,150 @@
+================================================================================
+WAYLAND DYNAMIC TILING GUIDE: RIVER WITH WAYBAR
+================================================================================
+
+1. HOW TO INSTALL THE COMPOSITOR AND THE PANEL
+--------------------------------------------------------------------------------
+Open your Fedora terminal and run this single command to install the River 
+compositor and the Waybar status panel:
+$ sudo dnf install river waybar
+
+2. HOW TO LAUNCH RIVER FOR THE FIRST TIME
+--------------------------------------------------------------------------------
+1. Log out of your current Fedora desktop session.
+2. On your login/lock screen, click on your username.
+3. Look for a gear icon (usually in the bottom right corner).
+4. Select "River" from the menu.
+5. Enter your password and log in.
+
+3. UNDERSTANDING RIVER CONFIGURATION
+--------------------------------------------------------------------------------
+Unlike most window managers that use static text files, River is configured using 
+a standard executable shell script. 
+
+First, create the configuration directory if it does not exist:
+$ mkdir -p ~/.config/river
+
+Create your configuration script:
+$ nano ~/.config/river/init
+
+4. COMPLETE READY-TO-USE CONFIGURATION (THE 'INIT' SCRIPT)
+--------------------------------------------------------------------------------
+Paste the following complete configuration block directly into your 
+`~/.config/river/init` file. It sets up your keyboard, configures mouse 
+drag-to-float functionality, and autostarts Waybar:
+
+#!/usr/bin/env bash
+
+# Use the Windows/Super key as the main modifier
+MOD="Super"
+
+# --- 1. CORE APPLICATIONS & PANEL ---
+# Automatically launch the top panel (Waybar)
+waybar &
+
+# --- 2. KEYBOARD SHORTCUTS ---
+# Open a terminal (Super + Enter)
+riverctl map normal $MOD Return spawn kitty
+
+# Close an active window (Super + Shift + Q)
+riverctl map normal $MOD+Shift Q close
+
+# Toggle a window between Tiling and Floating mode (Super + Space)
+riverctl map normal $MOD Space toggle-float
+
+# Exit the River session (Super + Shift + E)
+riverctl map normal $MOD+Shift E exit
+
+# --- 3. WINDOW NAVIGATION ---
+# Focus windows using Super + J/K
+riverctl map normal $MOD J focus-view next
+riverctl map normal $MOD K focus-view previous
+
+# Swap tiled positions using Super + Shift + J/K
+riverctl map normal $MOD+Shift J swap next
+riverctl map normal $MOD+Shift K swap previous
+
+# --- 4. MOUSE BINDINGS (DRAG AND RESIZE FLOATING WINDOWS) ---
+# Hold Super and drag with Left Mouse Button to move floating windows
+riverctl map-pointer normal $MOD BTN_LEFT move-view
+
+# Hold Super and drag with Right Mouse Button to resize floating windows
+riverctl map-pointer normal $MOD BTN_RIGHT resize-view
+
+# --- 5. FLOATING WINDOW RULES ---
+# Automatically float window types that shouldn't be tiled (like calculators)
+riverctl rule-add -app-id "gnome-calculator" float
+riverctl rule-add -title "Volume Control" float
+
+# Ensure layout is applied automatically
+riverctl default-layout rivertile
+rivertile -view-padding 6 -outer-padding 6 &
+
+# --- 6. MAKE SCRIPT EXECUTABLE ---
+# Make sure the system can run this file
+chmod +x ~/.config/river/init
+
+5. REPLICATING THE TOP PANEL LAYOUT (THE JSON FILE)
+--------------------------------------------------------------------------------
+Create the directory if it does not exist:
+$ mkdir -p ~/.config/waybar
+
+Create a file at: ~/.config/waybar/config.jsonc
+This tells Waybar to draw River-specific workspaces on your screen:
+
+{
+    "layer": "top",
+    "position": "top",
+    "margin-top": 10,
+    "margin-left": 20,
+    "margin-right": 20,
+    "modules-left": ["river/tags"],
+    "modules-center": ["clock"],
+    "modules-right": ["cpu", "memory", "tray"],
+    
+    "river/tags": {
+        "num-tags": 9
+    },
+    "clock": {
+        "format": "   {:%H:%M}"
+    },
+    "cpu": {
+        "format": "  {usage}%"
+    }
+}
+
+6. THE VISUAL LOOK (THE CSS FILE)
+--------------------------------------------------------------------------------
+Create a file at: ~/.config/waybar/style.css
+This gives your top panel the floating "COSMIC" look with rounded corners:
+
+window#waybar {
+    background-color: #1e1e2e;
+    color: #ffffff;
+    border-radius: 10px;
+    font-family: Sans-Serif;
+    font-size: 14px;
+}
+
+/* Style the River workspace tags/buttons */
+#tags button {
+    padding: 0 10px;
+    color: #cdd6f4;
+}
+
+#tags button.focused {
+    color: #ca9ee6;
+    font-weight: bold;
+}
+
+/* Separation room inside the panel modules */
+#tags, #clock, #cpu, #memory, #tray {
+    padding: 0px 15px;
+}
+
+7. OFFICIAL DOCUMENTATION
+--------------------------------------------------------------------------------
+* River Main Wiki: https://github.com
+* Riverctl Command Options: Run 'man riverctl' in your terminal
+* Waybar Integration: https://github.com
+

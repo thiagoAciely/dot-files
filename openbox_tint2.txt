@@ -1,0 +1,57 @@
+================================================================================
+GUI-BASED TOP PANEL GUIDE: OPENBOX WITH TINT2
+================================================================================
+
+1. HOW TO INSTALL THE WINDOW MANAGER AND THE PANEL
+--------------------------------------------------------------------------------
+Open your Fedora terminal and run this single command to install the Openbox 
+window manager, its configuration GUI, and the Tint2 panel:
+$ sudo dnf install openbox obconf tint2
+
+2. HOW TO LAUNCH OPENBOX FOR THE FIRST TIME
+--------------------------------------------------------------------------------
+1. Log out of your current Fedora desktop session.
+2. On your login/lock screen, click on your username.
+3. Look for a gear icon (usually in the bottom right corner).
+4. Select "Openbox" from the menu.
+5. Enter your password and log in.
+
+3. HOW TO DISABLE DEFAULT PANEL ELEMENTS
+--------------------------------------------------------------------------------
+Openbox does not have a built-in panel, so there is nothing to disable! 
+
+4. HOW TO LAUNCH TINT2 AUTOMATICALLY
+--------------------------------------------------------------------------------
+To make Tint2 start every time you log into Openbox, you need to add it to your 
+Openbox autostart file.
+
+First, create the configuration directory if it does not exist:
+$ mkdir -p ~/.config/openbox
+
+Open or create the autostart file:
+$ nano ~/.config/openbox/autostart
+
+Add this line to the bottom:
+tint2 &
+
+5. HOW TO GET THE "COSMIC" LOOK (THE GUI WAY)
+--------------------------------------------------------------------------------
+Instead of editing text files, Tint2 includes a full graphical theme manager.
+1. Right-click anywhere on your blank desktop to open the Openbox menu, and open 
+   a terminal or launcher.
+2. Run 'tint2conf' to open the Tint2 Settings GUI.
+3. Browse the pre-installed themes. Choose one that is already close to a 
+   clean, modern panel.
+4. Click "Edit Theme" (the wrench icon).
+5. Go to the "Panel" tab:
+   - Change "Position" to: Top, Center.
+   - Adjust "Size" and "Margin" to give it a floating, rounded appearance.
+6. Go to the "Panel Items" tab:
+   - Reorder items so your Taskbar/Workspaces are on the Left, Clock is in the 
+     Center, and Systray/Battery are on the Right.
+
+6. OFFICIAL DOCUMENTATION & THEMES
+--------------------------------------------------------------------------------
+* Official Wiki: https://gitlab.com
+* Pre-made Themes: Search GitHub for "addy-dclxvi tint2-theme-collections" for 
+  hundreds of drop-in, modern configurations.

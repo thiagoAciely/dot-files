@@ -1,0 +1,77 @@
+================================================================================
+TEXT-BASED TOP PANEL GUIDE: I3WM WITH POLYBAR
+================================================================================
+
+1. HOW TO INSTALL THE WINDOW MANAGER AND THE PANEL
+--------------------------------------------------------------------------------
+Open your Fedora terminal and run this single command to install the i3 window 
+manager and the Polybar panel:
+$ sudo dnf install i3 polybar
+
+2. HOW TO LAUNCH I3WM FOR THE FIRST TIME
+--------------------------------------------------------------------------------
+1. Log out of your current Fedora desktop session.
+2. On your login/lock screen, click on your username.
+3. Look for a gear icon (usually in the bottom right corner).
+4. Select "i3" or "i3wm" from the menu.
+5. Enter your password and log in. 
+*(Note: On your very first boot, i3 will ask if you want to generate a config file. 
+Press ENTER to generate it, and then choose your preferred modifier key, usually Win/Super).*
+
+3. HOW TO DISABLE THE DEFAULT I3BAR
+--------------------------------------------------------------------------------
+You must tell i3 to stop drawing its default bottom bar.
+1. Open your i3 configuration file: ~/.config/i3/config
+2. Scroll to the bottom and look for the 'bar { ... }' block.
+3. Delete or comment out that entire block by adding a '#' to the start of 
+   each line:
+
+# bar {
+#     status_command i3status
+# }
+
+4. Add this line right below it to launch Polybar when i3 starts:
+exec_always --no-startup-id polybar main
+
+4. REPLICATING THE LOOK (CONFIG FILE)
+--------------------------------------------------------------------------------
+Create the directory if it does not exist:
+$ mkdir -p ~/.config/polybar
+
+Create a new file at: ~/.config/polybar/config.ini
+Paste this simple structure to create a clean, modern top bar:
+
+[bar/main]
+width = 98%
+height = 35
+offset-x = 1%
+offset-y = 10
+radius = 8
+bottom = false
+background = #1e1e2e
+foreground = #cdd6f4
+
+# This splits your bar into Left, Center, and Right sections:
+modules-left = i3
+modules-center = date
+modules-right = cpu memory powermenu
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %H:%M
+
+[module/cpu]
+type = internal/cpu
+label = CPU %percentage%%
+
+5. OFFICIAL DOCUMENTATION
+--------------------------------------------------------------------------------
+* Official Wiki & Guides: https://github.com
+* User Themes: Search GitHub for "adi1090x polybar-themes" for a massive 
+  collection of beautifully pre-configured setups.
+
